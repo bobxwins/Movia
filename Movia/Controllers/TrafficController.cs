@@ -15,8 +15,9 @@ namespace Movia.Controllers
         public TrafficController(TrafficContext dbContext)
         {
             this.dbContext = dbContext;
+            String line = "w";
         }
- 
+        
 
         [HttpGet("GetByLine")]
         public async Task<IActionResult> GetLineTraffic(String line)
