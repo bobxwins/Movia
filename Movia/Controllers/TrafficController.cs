@@ -14,8 +14,9 @@ namespace Movia.Controllers
         public readonly TrafficContext dbContext;
         public TrafficController(TrafficContext dbContext)
         {
+            // Injection af TrafficContext
             this.dbContext = dbContext;
-            String line = "w";
+          
         }
         
 
@@ -24,13 +25,18 @@ namespace Movia.Controllers
         {
             var trafficLine = dbContext.Traffic.Where(x => x.Line == line).OrderByDescending(x => x.Date).ToListAsync();
 
+            // Brug af LINQ til at foretage en query der søger efter en specifik Line String sorteret efter dato
+
             if (trafficLine == null)
             {
                 return NotFound();
             }
 
             Console.WriteLine("At " + DateTime.Now + " " + ", You searched for: " + line);
+            // Logger alle søgnigner i applikationens konsol
             return Ok(trafficLine);
+            //Wrappes i et OK response
+
         }
 
         [HttpGet("GetDate")]
@@ -55,10 +61,14 @@ namespace Movia.Controllers
                 Line = addTrafficData.Line,
                 Date = DateTime.Now,
                 Message = addTrafficData.Message
+
+                // Parametre som der indtastes til domain objektet
             };
 
             await dbContext.Traffic.AddAsync(trafficData);
             await dbContext.SaveChangesAsync();
+            // Keywordsne async og await bruges så
+            // en opgave kan køre hvis ikke den afhænger af en anden opgave er færdig
             return Ok(trafficData);
         }
     }

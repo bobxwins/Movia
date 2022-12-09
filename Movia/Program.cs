@@ -10,9 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+ 
 builder.Services.AddDbContext<TrafficContext>(options => options.UseInMemoryDatabase("TrafficDB"));
 
-// In-memory Database
+// In-memory af databasen TrafficDB
 
 var app = builder.Build();
 
