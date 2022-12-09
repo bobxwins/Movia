@@ -19,12 +19,15 @@ namespace UnitTestMovia
         {
             TrafficData addTrafficData = new TrafficData();
             Assert.True(addTrafficData != null);
+
+            // Tester om TrafficData data modellen er tom ved initialiseringen
         }
 
 
         [Fact]
         public void TestCreatingTrafficData()
         {
+            // Tester om TrafficData kan postes via HttPost
 
             TrafficData addTrafficData = new TrafficData();
             addTrafficData.Line = "1A";
@@ -40,6 +43,8 @@ namespace UnitTestMovia
         [Fact]
         public void TestGetTrafficDataByLine ( )
         {
+            //Tester om TrafficData kan findes via at søge efter en traffic line
+
             String line;
 
         }
@@ -48,6 +53,7 @@ namespace UnitTestMovia
         [Fact]
         public void TestGetTrafficDataByDate( )
         {
+            //Tester om TrafficData kan findes via at søge mellem 2 datoer
             String Date;
 
         }
